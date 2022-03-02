@@ -1,2 +1,2 @@
 From tomcat
-COPY aws-rds-java/target/LoginWebApp*.war /usr/local/tomcat/webapps/
+COPY /var/lib/jenkins/workspace/PROJECT/target/*.war /usr/local/tomcat/webapps/
