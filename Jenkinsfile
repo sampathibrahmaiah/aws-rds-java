@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        dockerImage =''
-        registry = 'deepika2chebolu/aws-rds'
-    }
     stages{
         stage('build') {
             steps {
@@ -13,7 +9,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build registry
+                    sh 'docker build -t deepika2chebolu .'
                 }
             }
         }
