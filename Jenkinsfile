@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        DATE = new Date().format('yy.M')
-        TAG = "${DATE}.${BUILD_NUMBER}"
+        dockerImage =''
+        registry = 'deepika2chebolu/aws-rds'
     }
     stages{
         stage('build') {
@@ -13,7 +13,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("deepika2chebolu/aws-rds:${TAG}")
+                    dockerImage = docker.build registry
                 }
             }
         }
