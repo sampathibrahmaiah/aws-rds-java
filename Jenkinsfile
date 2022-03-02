@@ -13,7 +13,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("deepika2chebolu/aws-rds:${TAG} .")
+                    docker.build("deepika2chebolu/aws-rds:${TAG}.")
                 }
             }
         }
