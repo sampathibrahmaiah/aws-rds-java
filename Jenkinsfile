@@ -1,5 +1,9 @@
 pipeline {
     agent any
+      environment {
+        DATE = new Date().format('yy.M')
+        TAG = "${DATE}.${BUILD_NUMBER}"
+    }
     stages{
         stage('build') {
             steps {
@@ -9,7 +13,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    sh 'docker build -t deepika2chebolu .'
+                    docker.build("deepika2chebolu/aws-rds:${TAG}")
                 }
             }
         }
