@@ -32,7 +32,7 @@ pipeline {
                 node('n2') {
                     sh 'docker stop aws-rds |true'
                     sh 'docker rm aws-rds | true'
-                    sh 'docker container run -dt -p 8090:8080 deepika2chebolu/aws-rds:${TAG}'
+                    sh 'docker container run -dt -p 9090:8080 deepika2chebolu/aws-rds:${TAG}'
                 }
             }
         }
