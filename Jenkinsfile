@@ -29,9 +29,10 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sshagent(credentials:['n2']) {
-                    sh 'ssh -T -o StrictHostKeyChecking=no centos@172.31.95.192'
-                sh 'docker container run -dt --name myapp -p 8090:8080 deepika2chebolu/aws-rds:${TAG}'
+                node('n2') {
+                    sh 'docker stop aws-rds |true'
+                    sh 'docker rm aws-rds | true'
+                    sh 'docker container run -dt --name myapp -p 8090:8080 deepika2chebolu/aws-rds:${TAG}'
                 }
             }
         }
