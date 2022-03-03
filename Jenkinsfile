@@ -29,7 +29,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sshagent(credentials:['n1']) {
+                sshagent(credentials:['n2']) {
                     sh 'ssh -T -o StrictHostKeyChecking=no centos@44.202.56.154'
                 sh 'docker container run -dt --name myapp -p 8090:8080 deepika2chebolu/aws-rds:${TAG}'
                 }
