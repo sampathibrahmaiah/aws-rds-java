@@ -13,7 +13,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("sampathibrahmaiah /aws-rds:${TAG}")
+                    docker.build("brahmaiahsampathi /aws-rds:${TAG}")
                 }
             }
         }
@@ -21,8 +21,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com','docker_credential') {
-                        docker.image("deepika2chebolu/aws-rds:${TAG}").push()
-                        docker.image("deepika2chebolu/aws-rds:${TAG}").push("latest")
+                        docker.image("brahmaiahsampathi/aws-rds:${TAG}").push()
+                        docker.image("brahmaiahsampathi/aws-rds:${TAG}").push("latest")
                     }
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
                 node('n2') {
                     sh 'docker stop aws-rds |true'
                     sh 'docker rm aws-rds | true'
-                    sh 'docker container run -dt -p 9092:8080 deepika2chebolu/aws-rds:${TAG}'
+                    sh 'docker container run -dt -p 9092:8080 brahmaiahsampathi/aws-rds:${TAG}'
                 }
             }
         }
